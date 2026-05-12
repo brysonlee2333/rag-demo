@@ -32,6 +32,7 @@ htmlcov/
 *.bak
 rag_practice/cache
 rag_practice/chroma_langchain_db
+rag_project/chroma_db
 
 # IDE 配置
 *.iml
