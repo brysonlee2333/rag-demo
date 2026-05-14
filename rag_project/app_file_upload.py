@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 from knowledge_base import KnowledgeBaseService
 
 # cd命令切换到文件所在目录，执行命令 streamlit run 文件名, 网页访问地址http://localhost:8501
@@ -24,4 +25,7 @@ if upload_file is not None:
     st.subheader(f"文件名：{file_name}")
     st.write(f"格式：{file_type}|大小：{file_size:.2f}KB")
     text = upload_file.getvalue().decode("utf-8")
-    st.session_state["service"].upload_by_str(text, file_name)
+    with st.spinner("载入知识库中。。。"):
+        time.sleep(1)  # 模拟执行延迟，让加载提示展示
+        result = st.session_state["service"].upload_by_str(text, file_name)
+        st.write(result)

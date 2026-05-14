@@ -5,8 +5,8 @@ from dotenv import load_dotenv
 from langchain_chroma import Chroma
 from langchain_community.embeddings import DashScopeEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-
 import config_data as config
+
 load_dotenv()
 
 def check_md5(md5_str: str):
@@ -46,7 +46,7 @@ class KnowledgeBaseService(object):
         self.chroma = Chroma(
             collection_name=config.collection_name,  # 数据库表名
             embedding_function=DashScopeEmbeddings(
-                model="text-embedding-v1",
+                model=config.embedding_model_name,
                 dashscope_api_key = api_key),
             persist_directory=config.persist_directory,
         )
